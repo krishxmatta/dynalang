@@ -1,0 +1,3 @@
+[submodule "environments/android_env"]
+	path = environments/android_env
+	url = https://github.com/google-deepmind/android_env.git

@@ -53,6 +53,13 @@ def main(argv=None):
       agent = agt.Agent(env.obs_space, env.act_space, step, config)
       embodied.run.train(agent, env, replay, logger, args)
 
+    elif args.script == 'train_offline':
+      replay = make_replay(config, config.offline_datadir)
+      from embodied.envs.android_env import get_explicit_spaces
+      obs_space, act_space = get_explicit_spaces()
+      agent = agt.Agent(obs_space, act_space, step, config)
+      embodied.run.train_offline(agent, replay, logger, args)
+
     elif args.script == 'train_save':
       replay = make_replay(config, logdir / 'episodes')
       env = wrapped_env(config, batch=True)

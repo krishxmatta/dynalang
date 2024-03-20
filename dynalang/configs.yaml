@@ -16,6 +16,7 @@ defaults:
   eval_dir: ''
   filter: '.*'
   text_dataset: ''
+  offline_datadir: '../offline'
 
   jax:
     platform: gpu

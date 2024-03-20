@@ -7,3 +7,4 @@ from .train_holdout import train_holdout
 from .train_save import train_save
 from .offline import offline
 from .sample import sample
+from .train_offline import train_offline

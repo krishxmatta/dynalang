@@ -1,5 +1,24 @@
 import embodied
 
+def get_explicit_spaces():
+    obs_space = {
+        "orientation": embodied.Space(dtype=np.uint8, shape=(4,), low=0, high=1),
+        "pixels": embodied.Space(dtype=np.uint8, shape=(1920, 1080, 3), low=0, high=255),
+        "timedelta": embodied.Space(dtype=np.int64, shape=(), low=-9223372036854775806, high=9223372036854775805),
+        "reward": embodied.Space(dtype=np.float32, shape=(), low=-np.inf, high=np.inf),
+        "is_first": embodied.Space(dtype=bool, shape=(), low=False, high=True),
+        "is_last": embodied.Space(dtype=bool, shape=(), low=False, high=True),
+        "is_terminal": embodied.Space(dtype=bool, shape=(), low=False, high=True)
+    }
+
+    act_space = {
+        "action_type": embodied.Space(dtype=np.float32, shape=(2,), low=0, high=1),
+        "touch_position": embodied.Space(dtype=np.float32, shape=(2,), low=-1.0, high=1.0),
+        "reset": embodied.Space(dtype=bool, shape=(), low=False, high=True),
+    }
+
+    return obs_space, act_space
+
 class AndroidEnv(embodied.Env):
     def __init__(self,
                  task,

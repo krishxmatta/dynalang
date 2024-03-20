@@ -1,4 +1,5 @@
 import embodied
+import numpy as np
 
 def get_explicit_spaces():
     obs_space = {

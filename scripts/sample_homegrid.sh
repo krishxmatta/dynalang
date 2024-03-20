@@ -13,7 +13,7 @@ shift
 python dynalang/sample.py \
   --run.script sample \
   --logdir ~/logdir/homegrid/$name \
-  --use_wandb True \
+  --use_wandb False \
   --task $task \
   --envs.amount 1 \
   --seed $seed \

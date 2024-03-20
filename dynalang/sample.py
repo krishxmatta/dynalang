@@ -148,6 +148,7 @@ def make_env(config, **overrides):
     'pinpad': 'embodied.envs.pinpad:PinPad',
     'messenger': 'embodied.envs.messenger:Messenger',
     'homegrid': 'embodied.envs.homegrid:HomeGrid',
+    'androidenv': 'embodied.envs.android_env:AndroidEnv',
     'vln': 'embodied.envs.vln:VLNEnv',
     'langroom': 'langroom:LangRoom',
     'procgen': lambda task, **kw: from_gym.FromGym(

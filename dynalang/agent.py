@@ -139,7 +139,7 @@ class Agent(nj.Module):
       if key.startswith('log_') or key in ('key',):
         continue
       if key == "token":
-        value = jax.nn.one_hot(value, self.obs_space[key].high)
+        value = jax.nn.one_hot(value, int(self.obs_space[key].high))
       elif len(value.shape) > 3 and value.dtype == jnp.uint8:
         value = jaxutils.cast_to_compute(value) / 255.0
       else:

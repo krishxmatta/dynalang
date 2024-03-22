@@ -48,7 +48,8 @@ class AndroidEnv(embodied.Env):
         self.observation_space = self._env.observation_space
         self.action_space = gym.spaces.Dict({"action": gym.spaces.Box(0, 299, (), np.int32)})
 
-        self.wrappers = [from_gym.FromGym]
+        self.wrappers = [from_gym.FromGym,
+                         lambda e: embodied.wrappers.ResizeImage(e, (1024, 1024))]
 
     def reset(self):
         obs = self._env.reset()

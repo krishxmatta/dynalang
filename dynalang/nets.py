@@ -485,6 +485,7 @@ class MultiEncoder(nj.Module):
     self.shapes = {**self.cnn_shapes, **self.mlp_shapes}
     print('Encoder CNN shapes:', self.cnn_shapes)
     print('Encoder MLP shapes:', self.mlp_shapes)
+    import pdb ; pdb.set_trace()
     cnn_kw = {**kw, 'minres': minres, 'name': 'cnn'}
     mlp_kw = {**kw, 'symlog_inputs': symlog_inputs, 'name': 'mlp'}
     if cnn == 'resnet':

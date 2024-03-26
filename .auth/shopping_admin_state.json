@@ -1,0 +1,1 @@
+{"cookies": [{"name": "admin", "value": "dd0596492df3f3ddf68b2a32e561f7f8", "domain": ".ec2-3-131-244-37.us-east-2.compute.amazonaws.com", "path": "/admin", "expires": 1711081829.534011, "httpOnly": true, "secure": false, "sameSite": "Lax"}], "origins": []}

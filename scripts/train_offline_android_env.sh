@@ -18,10 +18,14 @@ python dynalang/train.py \
   --task $task \
   --envs.amount 1 \
   --seed $seed \
-  --encoder.mlp_keys orientation,timedelta \
-  --decoder.mlp_keys orientation,timedelta \
+  --encoder.mlp_keys 'orientation' \
+  --decoder.mlp_keys 'orientation' \
   --decoder.vector_dist onehot \
-  --batch_size 16 \
-  --batch_length 256 \
+  --batch_size 4 \
+  --batch_length 32 \
   --run.train_ratio 32 \
   "$@"
+
+
+# --encoder.mlp_keys 'orientation|timedelta' \
+# --decoder.mlp_keys 'orientation|timedelta' \

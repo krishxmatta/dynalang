@@ -87,7 +87,7 @@ class Agent(nj.Module):
     metrics.update(mets)
     context = {**data, **wm_outs['post']}
     if self.config.run.pretrain_wm_only:
-        return wm_outs, state, metrics
+      return wm_outs, state, metrics
     # Flatten (batch, seq) -> (batch * seq)
     start = tree_map(lambda x: x.reshape([-1] + list(x.shape[2:])), context)
     _, mets = self.task_behavior.train(self.wm.imagine, start, context)

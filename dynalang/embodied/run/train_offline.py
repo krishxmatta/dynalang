@@ -65,7 +65,6 @@ def train_offline(agent, replay, logger, args):
   dataset = agent.dataset(replay.dataset)
   state = [None]  # To be writable from train step function below.
   assert args.pretrain > 0  # At least one step to initialize variables.
-
   for pretrain_iter in range(args.pretrain):
     with timer.scope('dataset'):
       batch = next(dataset)
@@ -91,15 +90,13 @@ def train_offline(agent, replay, logger, args):
       logger.add(usage.stats(), prefix='usage')
       logger.add({"real_step": real_env_step.value})
       logger.write(fps=True)
-
+  
   checkpoint = embodied.Checkpoint(logdir / 'checkpoint.ckpt')
   timer.wrap('checkpoint', checkpoint, ['save', 'load'])
   checkpoint.step = step
   checkpoint.real_step = real_env_step 
   checkpoint.agent = agent
-# checkpoint.replay = replay
   if args.from_checkpoint:
-#    shutil.copy(args.from_checkpoint, logdir / "init.ckpt")
     checkpoint.load(args.from_checkpoint)
   checkpoint.load_or_save()
   should_save(step)  # Register that we jused saved.
@@ -107,9 +104,9 @@ def train_offline(agent, replay, logger, args):
   print('Start training loop.')
   num_substeps = 100
   while step < args.steps:
-    for _ in range(num_substeps):
+    for i in range(num_substeps):
+      print('training', i)
       step.increment()
       train_step(None, None)
-    driver(policy, steps=100)
     if should_save(step):
       checkpoint.save()

@@ -411,7 +411,7 @@ class Optimizer(nj.Module):
         if label == "frozen":
           print(f" {k}")
         return label
-      print("Frozen keys: ")
+      # print("Frozen keys: ")
       return tree_map(label_key, tree_keys(params))
 
     self.opt = optax.multi_transform(
